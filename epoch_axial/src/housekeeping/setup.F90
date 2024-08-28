@@ -628,28 +628,20 @@ CONTAINS
         !    * ((( (x(ix) - x_coil)) / r_coil_1) &
         !    -  (( (x(ix) - x_coil)) / r_coil_2))
         IF (im == 0) THEN
-          bxm(ix,ir,im) = 4.0_num
-          brm(ix,ir,im) = 4.0_num
-            IF (x(ix) < 0.0_num) THEN
-              brm(ix,ir,im) = 4.0_num * &
-                  (0.5_num - 0.5_num * COS(pi / 0.5_num * (x(ix) + 0.5_num)))
-            END IF
-            IF (x(ix) > 1.5_num) THEN
-              brm(ix,ir,im) = 4.0_num * &
-                  (0.5_num - 0.5_num * COS(pi / 0.5_num * (x(ix) - 2.0_num)))
-            END IF
+          bxm(ix,ir,im) = 1.0_num
+          brm(ix,ir,im) = 1.0_num
+          IF (x(ix) < 0.0_num) THEN
+            brm(ix,ir,im) = 1.0_num * &
+                (0.5_num - 0.5_num * COS(pi / 0.5_num * (x(ix) + 0.5_num)))
+          END IF
+          IF (x(ix) > 1.5_num) THEN
+            brm(ix,ir,im) = 1.0_num * &
+                (0.5_num - 0.5_num * COS(pi / 0.5_num * (x(ix) - 2.0_num)))
+          END IF
         END IF
         IF (im == 1) THEN
           bxm(ix,ir,im) = 0.0_num
           brm(ix,ir,im) = 0.0_num
-          IF (x(ix) < 0.0_num) THEN
-            brm(ix,ir,im) = 4.0_num * &
-                (0.5_num - 0.5_num * COS(pi / 0.5_num * (x(ix) + 0.5_num)))
-          END IF
-          IF (x(ix) > 1.5_num) THEN
-            brm(ix,ir,im) = 4.0_num * &
-                (0.5_num - 0.5_num * COS(pi / 0.5_num * (x(ix) - 2.0_num)))
-          END IF
         END IF
 
         END DO
